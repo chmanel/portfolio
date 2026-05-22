@@ -19,7 +19,7 @@
     ],
     "hero": {
         "type": "Hero",
-        "title": "Designer, Frontend Developer & Mentor",
+        "title": "Chanel",
         "text": "I’m a developer and UX/UI designer based in the U.S. with extensive experience in digital consulting. Passionate about minimal and brutalist design, I draw inspiration from nature, art, and a good cup of coffee.\n\n[Learn more](https://docs.netlify.com/frameworks/eleventy/)\n",
         "image": {
             "src": "/images/person.jpg",

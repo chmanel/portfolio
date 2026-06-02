@@ -1,25 +1,39 @@
 {
-  "name": "eleventy-blog-starter",
-  "version": "1.0.0",
-  "description": "A blog template using the Eleventy site generator.",
-  "type": "module",
+  "name": "EleventyOne",
+  "version": "3.0.0",
+  "description": "A project bootstrap for Eleventy sites. With pipelines for PostCSS, JavaScript, and serverless functions",
+  "author": "Phil Hawksworth",
+  "license": "MIT",
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve --port 3000 && npx tailwindcss -i ./src/css/styles.css -o ./public/style.out.css --watch",
-    "build": "npx @11ty/eleventy && npx tailwindcss -i ./src/css/styles.css -o ./style.out.css --minify"
+    "start": "npm run dev",
+    "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
+    "build": "cross-env ELEVENTY_ENV=prod eleventy",
+    "seed": "cross-env ELEVENTY_ENV=seed eleventy"
   },
-  "engines": {
-    "node": ">=18"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philhawksworth/eleventyone"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
+    "axios": "^1.16.1",
+    "cssnano": "^8.0.1",
+    "dotenv": "^8.0.0",
+    "luxon": "^1.16.0",
+    "node-fetch": "^2.6.1",
+    "postcss-import": "^16.1.1",
+    "postcss-mixins": "^12.1.2",
+    "postcss-simple-vars": "^7.0.1",
+    "uglify-js": "^3.6.0",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^6.0.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/markdown-it": "^14.1.2",
-    "cross-env": "^7.0.3",
-    "luxon": "^3.5.0",
-    "tailwindcss": "^3.4.16",
-    "zod": "^3.23.8",
-    "zod-validation-error": "^3.3.1"
+    "@11ty/eleventy": "^3.1.5",
+    "autoprefixer": "^10.5.0",
+    "cross-env": "5.2.0",
+    "html-minifier-terser": "^7.2.0",
+    "postcss": "^8.5.15",
+    "postcss-nested": "^7.0.2",
+    "postcss-preset-env": "^11.3.0"
   }
 }

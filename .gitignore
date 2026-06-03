@@ -1,25 +1,15 @@
-# Netlify Visul Editor (Stackbit)
-.cache
-.stackbit/cache
+# dependencies installed by npm
+/node_modules
 
-# build output
-_site/
+# build artefacts
+/dist
+/src/site/_includes/css
 
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# environment variables
+# secrets and errors
 .env
-.env.production
+/yarn-error.log
 
-# macOS-specific files
+# macOS related files
 .DS_Store
-
-# Local Netlify folder
-.netlify
+.AppleDouble
+.LSOverride

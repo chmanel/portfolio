@@ -1,58 +1,78 @@
-# Eleventy (11ty) Blog Starter
+# EleventyOne
 
-![Eleventy Blog Starter preview.](eleventy-blog-starter.jpg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/056b4a67-70e6-4af4-9be5-dee151b8e906/deploy-status)](https://app.netlify.com/sites/eleventyone/deploys)
 
-A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) and [Tailwind CSS](https://tailwindcss.com/). 
+Phil's first port of call when starting another project using Eleventy.
 
-**View demo:** [https://11ty-blog-starter-demo.netlify.app/](https://11ty-blog-starter-demo.netlify.app/)
+This project scaffold includes:
 
-## Deploying to Netlify
+- [Eleventy](https://11ty.io) with a skeleton site
+- A date format filter for Nunjucks based on [Luxon](https://moment.github.io/luxon)
+- A tiny CSS pipeline with PostCSS
+- A tiny inline JS pipeline
+- JS search index generator
+- [Netlify Dev](https://www.netlify.com/products/dev) for testing [Netlify redirects](https://netlify.com/docs/redirects/)
+- Serverless (FaaS) development pipeline with [Netlify Dev](https://www.netlify.com/products/dev) and [Netlify Functions](https://www.netlify.com/products/functions)
 
-If you click "Deploy to Netlify" button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/eleventy-blog-starter)
+![Eleventy screenshot](./eleventyone-template.jpg)
 
 
-## Getting Started
+## Instructions
 
-1. Clone this Repository
+To get your own instance of this 11ty starter project cloned and deploying to Netlify very quickly, just click the button below and follow the instructions.
 
-```
-git clone https://github.com/netlify-templates/eleventy-blog-starter.git
-```
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philhawksworth/eleventyone)
 
-2. Install dependencies
 
-```
+## Wait, what happens when I click that button?
+
+Good question. Here's what it will do...
+
+1. Netlify will clone the git repository of this project into your Github account. It will be asking for permission to add the repo for you.
+2. We'll create a new site for you in Netlify, and configure it to use your shiny new repo. Right away you'll be able to deploy changes simply by pushing changes to your repo.
+3. That's it really.
+
+
+## Prerequisites
+
+- [Node and NPM](https://nodejs.org/)
+- [Netlify CLI](https://github.com/netlify/cli)
+
+## Running locally
+
+```bash
+# install the dependencies
 npm install
+
+# External data sources can be stashed locally
+npm run seed
+
+# It will then be available locally for building with
+npom start
 ```
 
-3. Run Eleventy locally
+## Add some Netlify helpers
+Netlify Dev adds the ability to use Netlify redirects, proxies, and serverless functions.
 
+```bash
+# install the Netlify CLI in order to get Netlify Dev
+npm install -g netlify-cli
+
+# run a local server with some added Netlify sugar in front of Eleventy
+netlify dev
 ```
-npm run dev
-```
 
-4. Generate a production-ready build 
+A serverless functions pipeline is included via Netlify Dev. By running `netlify dev` you'll be able to execute any of your serverless functions directly like this:
 
-```
-npm run build
-```
+- /.netlify/functions/hello
+- /.netlify/functions/fetch-joke
 
-Or you can run [debug mode](https://www.11ty.dev/docs/debugging/) to see all the internals.
 
-## Project Structure
+### Redirects and proxies
 
-- `content/blog/` has the blog posts but really they can live in any directory. They need only the `posts` tag to be included in the blog posts [collection](https://www.11ty.dev/docs/collections/).
-- Use the `eleventyNavigation` key (via the [Eleventy Navigation plugin](https://www.11ty.dev/docs/plugins/navigation/)) in your front matter to add a template to the top level site navigation. This is in use on `content/index.njk` and `content/about/index.md`.
-- Content can be in _any template format_ (blog posts needn’t exclusively be markdown, for example). Configure your project’s supported templates in `eleventy.config.js` -> `templateFormats`.
-- The `public` folder in your input directory will be copied to the output folder (via `addPassthroughCopy` in the `eleventy.config.js` file). This means `./public/*` will live at `./_site/*` after your build completes.
-- This project uses three [Eleventy Layouts](https://www.11ty.dev/docs/layouts/):
-  - `_includes/layouts/base.njk`: the top level HTML structure
-  - `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
-  - `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
-- `_includes/postslist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `content/index.njk` has an example of how to use it.
+Netlify's Redirects API can provide friendlier URLs as proxies to these URLs.
 
-## Support
+- /api/hello
+- /api/fetch-joke
 
-If you get stuck along the way, get help in our [support forums](https://answers.netlify.com/).
